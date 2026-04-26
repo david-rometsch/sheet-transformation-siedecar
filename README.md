@@ -1,5 +1,8 @@
 # sheet-transformation-siedecar
 This is a simple example of an application of a sidecar scheme for a single node docker deployment. 
+
+---
+
 ## structure
 ```
 .
@@ -13,11 +16,15 @@ This is a simple example of an application of a sidecar scheme for a single node
 
 ```
 
+---
+
 ## roles
 |container|role|purpose|
 |-|-|-|
 |onlyoffice/desktopeditor|main container|work on documents|
 |transform|sidecar|transformation: interchange x and y axis of sheet|
+
+---
 
 ## diagram
 ![diagram](documentation/diagram.svg)
@@ -29,9 +36,24 @@ since the container is started with docker-compose it is best to attach to the s
 docker compose exec transform bash
 ```
 
+---
+
 ## do the transformation
 in the shell on the transform service: 
 ```sh
 python transform.py # then provide the file
 ```
+### before:
+| | | |
+|-|-|-|
+|a1|b1|c1|
+|a2|b2|c2|
+|a3|b3|c3|
+
+### after:
+| | | |
+|-|-|-|
+|a1|a2|a3|
+|b1|b2|b3|
+|c1|c2|c3|
 
