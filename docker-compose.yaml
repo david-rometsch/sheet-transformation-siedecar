@@ -1,0 +1,17 @@
+---
+services:
+  onlyoffice:
+    image: onlyoffice/documentserver
+    ports:
+      - 80:80
+    volumes:
+      - ./documents:/var/www/onlyoffice/Data
+    tty: true
+    stdin_open: true
+
+  transformation:
+    build: .
+    volumes:
+      - ./documents:/documents
+    tty: true
+    stdin_open: true
